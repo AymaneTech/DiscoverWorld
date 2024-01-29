@@ -26,5 +26,4 @@
         Route::post("/login", [SessionsController::class, "store"]);
     });
 
-
     Route::post("/logout", [SessionsController::class, "destroy"])->middleware("auth");
