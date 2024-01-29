@@ -27,7 +27,18 @@
             <div class="mt-16">
                 <img class="rounded-xl shadow-xl" src="images/nature/img1.jpg" alt="">
             </div>
+
         </main>
+        <section>
+            {{--                    @include("includes._header")--}}
+
+            @if($posts->count())
+                <x-posts-grid :posts="$posts" />
+            @else
+                <p class="text-center">No Posts yet. Please check back later !!! </p>
+            @endif
+
+        </section>
 
     </section>
 </x-layout>
