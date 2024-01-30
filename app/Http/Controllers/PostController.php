@@ -34,4 +34,10 @@ class PostController extends Controller
 
         return redirect("/")->with("success", "Post created successfully");
     }
+
+    public function show (Post $post){
+        return view('posts.show', [
+            "post" => $post
+        ]);
+    }
 }

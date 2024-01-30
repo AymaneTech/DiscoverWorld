@@ -3,8 +3,7 @@
     class="transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">
     <div class="py-6 px-5 lg:flex">
         <div class="flex-1 lg:mr-8">
-            {{-- TODO --}}
-            <img src="./images/storage/{{ $post->image }}" alt="Blog Post illustration" class="rounded-xl">
+            <img src="./images/storage/{{ $post->image }}" alt="Blog Post illustration" class="rounded-xl h-[500px] w-[500px] object-cover ">
         </div>
 
         <div class="flex-1 flex flex-col justify-between">
@@ -25,7 +24,8 @@
             </header>
 
             <div class="text-sm mt-2 space-y-4">
-                {!! $post->description !!}
+                {{ substr($post->description, 0, 700) }}
+                }}
             </div>
 
             <footer class="flex justify-between items-center mt-8">

@@ -21,13 +21,15 @@ Route::middleware("guest")->group(function () {
     Route::get('/register', [RegisterController::class, "create"]);
     Route::post('/register', [RegisterController::class, "store"]);
 
-    Route::get('/login', [SessionsController::class, "create"]);
+ ;   Route::get('/login', [SessionsController::class, "create"]);
     Route::post("/login", [SessionsController::class, "store"]);
 });
 
-//Route::middleware("auth")->group(function () {
+Route::middleware("auth")->group(function () {
     Route::post("/logout", [SessionsController::class, "destroy"]);
     Route::get("/posts/create", [PostController::class, "create"]);
-
-//});
     Route::post("/posts/create", [PostController::class, "store"]);
+});
+
+
+Route::get("posts/{post:slug}", [PostController::class, "show"]);

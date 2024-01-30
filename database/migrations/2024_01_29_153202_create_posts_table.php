@@ -17,8 +17,9 @@ return new class extends Migration
             $table->foreignId("user_id")
                 ->constrained("users");
             $table->foreignId("category_id")
-                ->constrained("category");
+                ->constrained("categories");
             $table->string("title");
+            $table->string("slug");
             $table->text("description");
             $table->text("body");
             $table->string("image");

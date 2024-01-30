@@ -2,8 +2,8 @@
 <article
     {{ $attributes->merge(['class' => 'transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl']) }}>
     <div class="py-6 px-5">
-        <div>
-            <img src="./images/storage/{{ $post->image }}" alt="Blog Post illustration" class="rounded-xl" width="400" height="300">
+        <div class="w-100 mx-auto">
+            <img src="./images/storage/{{ $post->image }}" alt="Blog Post illustration" class="rounded-xl w-[100%] h-[313px] object-cover ">
         </div>
 
 
@@ -25,7 +25,7 @@
             </header>
 
             <div class="text-sm mt-2 space-y-4">
-                {{ $post->description  }}
+                {{ substr($post->description, 0, 500) }}
             </div>
 
             <footer class="flex justify-between items-center mt-8">
