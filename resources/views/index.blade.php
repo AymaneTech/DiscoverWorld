@@ -50,8 +50,8 @@
 
                             <x-dropdown-item :active="request()->routeIs('home')" href="/">All</x-dropdown-item>
                             @foreach($categories as $category)
-                                <x-dropdown-item href="/categories/{{ $category->slug}}"
-                                                 :active="request()->is('categories/'. $category->slug)"
+                                <x-dropdown-item href="/?category={{ $category->slug}}"
+                                                 :active="request()->is('/?=category'. $category->slug)"
                                 >{{ucwords($category->name)}}</x-dropdown-item>
                             @endforeach
                         </x-dropdown>
@@ -70,7 +70,7 @@
                         </x-dropdown>
                     </div>
                     <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
-                        <form method="GET" action="">
+                        <form method="GET" action="/">
                             <input type="text"
                                    name="search"
                                    placeholder="Find something"
