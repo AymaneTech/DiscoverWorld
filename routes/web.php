@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PostController::class, "index"]);
+
+
 Route::middleware("guest")->group(function () {
     Route::get('/register', [RegisterController::class, "create"]);
     Route::post('/register', [RegisterController::class, "store"]);
