@@ -30,10 +30,8 @@
 
             <footer class="flex justify-between items-center mt-8">
                 <div class="flex items-center text-sm">
-                    <img src="./images/stoage/{{ $post->image }}" alt="Lary avatar">
                     <div class="ml-3">
-                        <h5 class="font-bold">Lary Laracore</h5>
-                        <h6>Mascot at Laracasts</h6>
+                       <h5 class="font-bold" >  <span class="font-normal">Created by</span>{{ $post->author->name }}</h5>
                     </div>
                 </div>
 

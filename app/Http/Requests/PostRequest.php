@@ -24,10 +24,11 @@ class PostRequest extends FormRequest
     {
         return [
             "title" => ["required", "min:8", "max:255"],
+            "slug" => ["required", "min:8", "max:255"],
             "description" => ["required"],
             "body" => ["required"],
             "category_id" => ["required"],
-            "image" => ["required", "file"],
+            "image" => ["required"],
             "user_id" => ["required", ],
         ];
     }

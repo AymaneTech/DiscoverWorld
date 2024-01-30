@@ -4,16 +4,16 @@
               class="container mx-auto  w-[60vw]"
               enctype="multipart/form-data"
         >
-            <h2 class="text-4xl font-bold text-start text-[#515F08] my-2">Unleash the Power of Agile Scrum, Join us</h2>
+            <h2 class="text-4xl font-bold text-start text-[#515F08] my-2">Create a new Adventure story</h2>
             @csrf
             <div class="mb-6">
-                <label for="title" class="block mb-1">Post Title</label>
+                <label for="title" class="block mb-1">Title</label>
                 <input
                     id="title"
                     type="text"
                     name="title"
                     class="w-full bg-transparent text-blue-gray-700 font-sans font-normal outline-none focus:outline-none disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-blue-gray-200 placeholder-opacity-50 border border-blue-gray-200 focus:border-gray-900 rounded-lg px-3 py-2.5"
-                    placeholder="Enter your name"
+                    placeholder="Enter your title"
                     value="{{ old('title') }}"
                 />
 
@@ -22,6 +22,28 @@
                 @enderror
             </div>
             <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
+            <div class="group flex justify-between">
+                <div class="mb-6 w-[45%]">
+                    <label for="title" class="block mb-1">Slug</label>
+                    <input
+                        id="slug"
+                        type="text"
+                        name="slug"
+                        class="w-full bg-transparent text-blue-gray-700 font-sans font-normal outline-none focus:outline-none disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-blue-gray-200 placeholder-opacity-50 border border-blue-gray-200 focus:border-gray-900 rounded-lg px-3 py-2.5"
+                        placeholder="Enter your slug"
+                        value="{{ old('slug') }}"
+                    />
+                </div>
+                <div class="mb-6 w-[45%]">
+                    <label for="category" class="block mb-1">Category</label>
+                    <select name="category_id" id="category"
+                            class="block w-full mt-1 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
             <div class="mb-6">
                 <label for="category" class="block mb-1">Category</label>
                 <select name="category_id" id="category"
