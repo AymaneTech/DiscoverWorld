@@ -1,0 +1,15 @@
+1706619777-4268-42212620,1706619774.929,GET,/?search=helo,"App\Http\Controllers\PostController@index",200,5701.34806633,request
+1706619781-1402-263737974,1706619780.6713,GET,/?search=helo,"App\Http\Controllers\PostController@index",200,1616.3928508759,request
+1706619835-2871-1030756211,1706619834.7631,GET,/,"App\Http\Controllers\PostController@index",200,2176.6729354858,request
+1706620232-7526-1051617911,1706620227.5877,GET,/,"App\Http\Controllers\PostController@index",200,11570.57595253,request
+1706620240-6495-484502593,1706620239.8259,GET,/images/storage/1706618323.jpg,,404,2018.6760425568,request
+1706620280-5983-1454148971,1706620279.6838,GET,/posts/create,"App\Http\Controllers\PostController@create",200,2576.0188102722,request
+1706620292-6383-1310392617,1706620292.1847,POST,/posts/store,,405,4420.0160503387,request
+1706620318-8293-1924272643,1706620318.3084,GET,/posts/create,"App\Http\Controllers\PostController@create",200,1800.2979755402,request
+1706620477-7958-676360953,1706620476.3679,GET,/posts/create,"App\Http\Controllers\PostController@create",200,4211.8430137634,request
+1706620548-8758-1999941790,1706620548.396,GET,/posts/create,"App\Http\Controllers\PostController@create",200,1776.0670185089,request
+1706624708-2100-1665003304,1706624705.8904,POST,/logout,"App\Http\Controllers\SessionsController@destroy",302,5362.2560501099,request
+1706624734-9943-715302361,1706624734.5554,POST,/logout,"App\Http\Controllers\SessionsController@destroy",500,3373.8780021667,request
+1706624738-5070-1587926966,1706624737.9565,POST,/logout,"App\Http\Controllers\SessionsController@destroy",500,3461.2948894501,request
+1706624745-2764-2125411168,1706624744.8221,POST,/logout,"App\Http\Controllers\SessionsController@destroy",500,3319.8080062866,request
+1706624752-0697-1676232751,1706624751.61,POST,/logout,"App\Http\Controllers\SessionsController@destroy",500,3374.605178833,request
