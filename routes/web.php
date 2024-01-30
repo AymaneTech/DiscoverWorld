@@ -28,7 +28,7 @@ Route::middleware("guest")->group(function () {
 Route::middleware("auth")->group(function () {
     Route::post("/logout", [SessionsController::class, "destroy"]);
     Route::get("/posts/create", [PostController::class, "create"]);
-    Route::post("/posts/create", [PostController::class, "store"]);
+    Route::post("/posts/create", [PostController::class, "store"])->name("posts.sotre");
 });
 
 

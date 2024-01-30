@@ -13,11 +13,10 @@ class RegisterController extends Controller
         return view("auth.register");
     }
 
-    public function store(RegisterRequest $request)
+    public function store(RegisterRequest $request, User $user)
     {
         $validatedData = $request->validated();
 
-        $user = new User();
 
         $user->fill($validatedData);
 
