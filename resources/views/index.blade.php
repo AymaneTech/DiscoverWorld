@@ -99,8 +99,8 @@
                                         <x-icon name="down-arrow" class="absolute pointer-events-none"/>
                                     </button>
                                 </x-slot>
-                                <x-dropdown-item href="/">Latest</x-dropdown-item>
-                                <x-dropdown-item href="/">Oldest</x-dropdown-item>
+                                <x-dropdown-item href="/?sort=oldest">Oldest</x-dropdown-item>
+                                <x-dropdown-item href="/?sort=newest">Newest</x-dropdown-item>
                             </x-dropdown>
                         </div>
                         <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">

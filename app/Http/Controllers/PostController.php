@@ -5,27 +5,28 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use App\Models\Destination;
 use App\Models\Post;
+use App\Models\User;
 use App\Services\ImageService;
-use App\Services\StatisticService;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     protected $imageService;
-    protected $statisticService;
 
-    public function __construct(ImageService $imageService, StatisticService $statisticService)
+    public function __construct(ImageService $imageService)
     {
         $this->imageService = $imageService;
-        $this->statisticService = $statisticService;
     }
 
     public function index()
     {
         return view('index', [
-            "posts" => Post::latest()->filter(request(["search", "destination"]))->get(),
+            "posts" => Post::latest()->filter(request(["search", "destination", "sort"]))->get(),
             "destinations" => Destination::all(),
-            "statistics" => $this->statisticService->statistics(),
+            "statistics" => [
+                "users" => User::count(),
+                "posts" => Post::count(),
+                "destinations" => Destination::count(),
+            ],
         ]);
     }
 

@@ -30,15 +30,23 @@ class Post extends Model
             ->whereHas('category', fn($query) => $query->where("slug", $category)
             )
         );
+        ($filters["sort"] ?? null === 'newest')
+            ? $query->orderBy('created_at', 'desc')
+            : $query->orderBy('created_at', 'asc');
     }
 
-    public function destination(){
+    public function destination()
+    {
         return $this->belongsTo(Destination::class);
     }
-    public function author (){
+
+    public function author()
+    {
         return $this->belongsTo(User::class, "user_id");
     }
-    public function image(){
+
+    public function image()
+    {
         return $this->hasMany(Image::class);
     }
 }
