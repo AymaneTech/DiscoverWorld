@@ -3,13 +3,13 @@
     {{ $attributes->merge(['class' => 'transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl']) }}>
     <div class="py-6 px-5">
         <div class="w-100 mx-auto">
-            <img src="./images/storage/{{ $post->image }}" alt="Blog Post illustration" class="rounded-xl w-[100%] h-[313px] object-cover ">
+            <img src="/images/storage/{{ $post->image[0]->url ?? null}}" alt="Blog Post illustration" class="rounded-xl w-[100%] h-[313px] object-cover ">
         </div>
 
 
         <div class="mt-8 flex flex-col justify-between">
             <header>
-                <x-category-btn :category="$post->category"/>
+                <x-category-btn :destination="$post->destination"/>
 
                 <div class="mt-4">
                     <h1 class="text-3xl">

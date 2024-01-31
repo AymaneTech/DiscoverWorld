@@ -16,13 +16,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId("user_id")
                 ->constrained("users");
-            $table->foreignId("category_id")
-                ->constrained("categories");
+            $table->foreignId("destination_id")
+                ->constrained("destinations");
             $table->string("title");
             $table->string("slug");
             $table->text("description");
             $table->text("body");
-            $table->string("image");
             $table->timestamps();
         });
     }

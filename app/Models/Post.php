@@ -13,13 +13,12 @@ class Post extends Model
         "title",
         "description",
         "body",
-        "image",
         "user_id",
-        "category_id",
+        "destination_id",
         "slug",
     ];
 
-    protected $with = ["category", "author"];
+    protected $with = ["destination", "author", "image"];
 
     public function scopeFilter($query, array $filters)
     {
@@ -27,16 +26,19 @@ class Post extends Model
             ->where("title", "like", "%" . $search . "%")
             ->orWhere("body", "like", "%" . $search . "%"));
 
-        $query->when($filters["category"] ?? false, fn($query, $category) => $query
+        $query->when($filters["destination"] ?? false, fn($query, $category) => $query
             ->whereHas('category', fn($query) => $query->where("slug", $category)
             )
         );
     }
 
-    public function category(){
-        return $this->belongsTo(Category::class);
+    public function destination(){
+        return $this->belongsTo(Destination::class);
     }
     public function author (){
         return $this->belongsTo(User::class, "user_id");
+    }
+    public function image(){
+        return $this->hasMany(Image::class);
     }
 }

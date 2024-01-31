@@ -35,23 +35,14 @@
                     />
                 </div>
                 <div class="mb-6 w-[45%]">
-                    <label for="category" class="block mb-1">Category</label>
-                    <select name="category_id" id="category"
+                    <label for="destination" class="block mb-1">Destination</label>
+                    <select name="destination_id" id="destination"
                             class="block w-full mt-1 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
-                        @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @foreach($destinations as $destination)
+                            <option value="{{ $destination->id }}">{{ $destination->name }}</option>
                         @endforeach
                     </select>
                 </div>
-            </div>
-            <div class="mb-6">
-                <label for="category" class="block mb-1">Category</label>
-                <select name="category_id" id="category"
-                        class="block w-full mt-1 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach
-                </select>
             </div>
 
             <div class="mb-6">
@@ -88,7 +79,7 @@
                             and drop</p>
                         <p class="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                     </div>
-                    <input name="image" id="dropzone-file" type="file" class="hidden"/>
+                    <input name="images[]" id="dropzone-file" type="file" class="hidden" multiple/>
                 </label>
             </div>
             <div class="button flex items-start justify-end space-y-4">
