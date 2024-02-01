@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout >
     <section>
         <main class="container mx-auto">
             <div class="hero flex justify-between my-8">
@@ -58,11 +58,6 @@
                         <p class="text-sm text-gray-600">Active Users</p>
                     </div>
                 </div>
-            </section>
-
-            <section class="destination">
-                <h3 class="text-4xl font-bold text-center text-[#515F08] my-2 mb-4">Popular Destinations</h3>
-
             </section>
             <section>
                 <div class="flex flex-col gap-8">
