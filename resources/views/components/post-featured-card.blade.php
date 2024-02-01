@@ -25,7 +25,6 @@
 
             <div class="text-sm mt-2 space-y-4">
                 {{ substr($post->description, 0, 700) }}
-                }}
             </div>
 
             <footer class="flex justify-between items-center mt-8">

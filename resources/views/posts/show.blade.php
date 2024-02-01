@@ -2,7 +2,7 @@
     <section class="px-6 py-8">
         <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
             <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
-                <div class="col-span-4 lg:text-center lg:pt-14 mb-10">
+                <div class="col-span-2 lg:text-center lg:pt-14 mb-10">
 
                     <p class="mt-4 block text-gray-400 text-xs">
                         Published
@@ -16,7 +16,7 @@
                     </div>
                 </div>
 
-                <div class="col-span-8">
+                <div class="col-span-10">
                     <div class="hidden lg:flex justify-between mb-6">
                         <a href="/"
                            class="transition-colors duration-300 relative inline-flex items-center text-lg hover:text-blue-500">
@@ -32,7 +32,6 @@
 
                             Back to Posts
                         </a>
-
                         <x-category-btn :destination="$post->destination"/>
                     </div>
 
@@ -58,7 +57,7 @@
                     <div class="space-y-4 lg:text-lg leading-loose mt-24">
                         <h3 class="text-lg font-bold text-[#515F08] font-bold">Body : </h3>
                         <p>
-                            {{ $post->body }}
+                            {!! $post->body  !!}
                         </p>
                     </div>
                 </div>

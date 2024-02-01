@@ -35,3 +35,5 @@ Route::middleware("auth")->group(function () {
 
 
 Route::get("posts/{post:slug}", [PostController::class, "show"]);
+
+Route::get("cache", [PostController::class, "cache"]);

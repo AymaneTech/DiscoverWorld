@@ -17,9 +17,11 @@
         </div>
         <div class="flex gap-2 mt-2">
             @auth
-                <a href="/posts/create" class="font-semibold text-white bg-[#515F08] px-8 py-2 rounded-3xl">Share Post</a>
+                <a href="/posts/create" class="font-semibold text-white bg-[#515F08] px-8 py-2 rounded-3xl">Share
+                    Post</a>
                 <form action="/logout" method="post">
-                    <button class="font-semibold text-[#515F08] border border-[#515F08] px-8 py-2 rounded-3xl">Logout</button>
+                    <button class="font-semibold text-[#515F08] border border-[#515F08] px-8 py-2 rounded-3xl">Logout
+                    </button>
                     @csrf
                 </form>
             @else
@@ -33,5 +35,9 @@
 
 
 <x-flash/>
+
 </body>
 </html>
+<script src="https://cdn.ckeditor.com/ckeditor5/41.0.0/classic/ckeditor.js"></script>
+
+

@@ -55,15 +55,9 @@
                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
             </div>
-            <div class="mb-6">
-                <label for="body" class="block mb-1">Content</label>
-                <textarea name="body" id="body" placeholder="Enter the body of post"
-                          class="w-full border border-blue-gray-200 focus:border-gray-900 rounded-lg px-3 py-2.5"
-                          cols="120" rows="5">{{ old('body') }}</textarea>
 
-                @error('body')
-                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                @enderror
+            <div class="mb-8">
+                <textarea name="body" id="body" cols="30" rows="10"></textarea>
             </div>
 
             <div class="flex items-center justify-center w-full mb-6">
@@ -82,10 +76,25 @@
                     <input name="images[]" id="dropzone-file" type="file" class="hidden" multiple/>
                 </label>
             </div>
+
             <div class="button flex items-start justify-end space-y-4">
-                <button class="font-semibold text-white bg-[#515F08] px-8 py-2 rounded-3xl">Create </button>
+                <button class="font-semibold text-white bg-[#515F08] px-8 py-2 rounded-3xl">Create</button>
             </div>
 
         </form>
     </main>
+
 </x-layout>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#body' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<style>
+    .ck-editor__editable[role="textbox"] {
+        /* Editing area */
+        min-height: 200px;
+    }
+</style>

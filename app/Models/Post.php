@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\PostCreated;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,13 +27,21 @@ class Post extends Model
             ->where("title", "like", "%" . $search . "%")
             ->orWhere("body", "like", "%" . $search . "%"));
 
-        $query->when($filters["destination"] ?? false, fn($query, $category) => $query
-            ->whereHas('category', fn($query) => $query->where("slug", $category)
+        $query->when($filters["destination"] ?? false, fn($query, $destination) => $query
+            ->whereHas('destination', fn($query) => $query->where("slug", $destination)
             )
         );
-        ($filters["sort"] ?? null === 'newest')
-            ? $query->orderBy('created_at', 'desc')
-            : $query->orderBy('created_at', 'asc');
+        $sort = $filters["sort"] ?? '';
+        $isOldest = $sort === "oldest";
+
+        $query->when($isOldest, function ($query) {
+            return $query->oldest();
+        }, function ($query) {
+            return $query->latest();
+        });
+        if (!count(array_filter($filters))) {
+            $query->latest();
+        }
     }
 
     public function destination()
