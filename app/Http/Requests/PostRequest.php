@@ -27,8 +27,8 @@ class PostRequest extends FormRequest
             "slug" => ["required", "min:8", "max:255"],
             "description" => ["required"],
             "body" => ["required"],
-            "category_id" => ["required"],
-            "image" => ["required"],
+            "destination_id" => ["required"],
+            "images" => ["required"],
             "user_id" => ["required", ],
         ];
     }

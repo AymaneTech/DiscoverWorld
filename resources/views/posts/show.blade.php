@@ -1,25 +1,12 @@
 <x-layout>
     <section class="px-6 py-8">
         <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
-            <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
-                <div class="col-span-4 lg:text-center lg:pt-14 mb-10">
-                    <img src="/images/illustration-1.png" alt="" class="rounded-xl">
+            <article class="max-w-4xl mx-auto  gap-x-10">
 
-                    <p class="mt-4 block text-gray-400 text-xs">
-                        Published <time>{{ $post->created_at->diffForHumans() }}</time>
-                    </p>
 
-                    <div class="flex items-center lg:justify-center text-sm mt-4">
-                        <img src="/images/lary-avatar.svg" alt="Lary avatar">
-                        <div class="ml-3 text-left">
-                            <h5 class="font-bold">{{ $post->author->name }}</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-span-8">
+                <div class="">
                     <div class="hidden lg:flex justify-between mb-6">
-                        <a  href="/"
+                        <a href="/"
                            class="transition-colors duration-300 relative inline-flex items-center text-lg hover:text-blue-500">
                             <svg width="22" height="22" viewBox="0 0 22 22" class="mr-2">
                                 <g fill="none" fill-rule="evenodd">
@@ -33,15 +20,33 @@
 
                             Back to Posts
                         </a>
-
-                        <x-category-btn :category="$post->category"/>
+                        <x-category-btn :destination="$post->destination"/>
                     </div>
 
                     <h1 class="font-bold text-3xl lg:text-4xl mb-10">
                         {{ $post->title }}
                     </h1>
-                    <img src="/images/storage/{{ $post->image }}" alt="shit">
-
+                    <div class=" mb-8">
+                        <div class="flex items-center text-sm mt-4">
+                            <div class="ml-3 text-left">
+                                <p class="inline"> Created By <h5 class="font-bold">{{ $post->author->name }}</h5></p>
+                            </div>
+                        </div>
+                        <p class="mt-4 block text-gray-400 text-xs">
+                            Published
+                            <time>{{ $post->created_at->diffForHumans() }}</time>
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-8">
+                        <img src="/images/storage/{{ $post->image[0]->url }}" alt="shit"
+                             class="w-[100%] h-[200px] object-cover rounded-xl shadow-lg"
+                        >
+                        @foreach($post->image->skip(1) as $image)
+                            <img src="/images/storage/{{ $image->url }}" alt="shit"
+                                 class="w-[200px] h-[200px] object-cover rounded-xl shadow-lg"
+                            >
+                        @endforeach
+                    </div>
                     <div class="space-y-4 lg:text-lg leading-loose">
                         <h3 class="text-lg font-bold text-[#515F08] font-bold">Description : </h3>
                         <p class="italic font-bold">
@@ -49,9 +54,9 @@
                         </p>
                     </div>
                     <div class="space-y-4 lg:text-lg leading-loose mt-24">
-                    <h3 class="text-lg font-bold text-[#515F08] font-bold">Body : </h3>
+                        <h3 class="text-lg font-bold text-[#515F08] font-bold">Body : </h3>
                         <p>
-                            {{ $post->body }}
+                            {!! $post->body  !!}
                         </p>
                     </div>
                 </div>

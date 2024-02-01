@@ -35,23 +35,14 @@
                     />
                 </div>
                 <div class="mb-6 w-[45%]">
-                    <label for="category" class="block mb-1">Category</label>
-                    <select name="category_id" id="category"
+                    <label for="destination" class="block mb-1">Destination</label>
+                    <select name="destination_id" id="destination"
                             class="block w-full mt-1 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
-                        @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @foreach($destinations as $destination)
+                            <option value="{{ $destination->id }}">{{ $destination->name }}</option>
                         @endforeach
                     </select>
                 </div>
-            </div>
-            <div class="mb-6">
-                <label for="category" class="block mb-1">Category</label>
-                <select name="category_id" id="category"
-                        class="block w-full mt-1 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach
-                </select>
             </div>
 
             <div class="mb-6">
@@ -64,15 +55,9 @@
                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
             </div>
-            <div class="mb-6">
-                <label for="body" class="block mb-1">Content</label>
-                <textarea name="body" id="body" placeholder="Enter the body of post"
-                          class="w-full border border-blue-gray-200 focus:border-gray-900 rounded-lg px-3 py-2.5"
-                          cols="120" rows="5">{{ old('body') }}</textarea>
 
-                @error('body')
-                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                @enderror
+            <div class="mb-8">
+                <textarea name="body" id="body" cols="30" rows="10"></textarea>
             </div>
 
             <div class="flex items-center justify-center w-full mb-6">
@@ -88,13 +73,28 @@
                             and drop</p>
                         <p class="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                     </div>
-                    <input name="image" id="dropzone-file" type="file" class="hidden"/>
+                    <input name="images[]" id="dropzone-file" type="file" class="hidden" multiple/>
                 </label>
             </div>
+
             <div class="button flex items-start justify-end space-y-4">
-                <button class="font-semibold text-white bg-[#515F08] px-8 py-2 rounded-3xl">Create </button>
+                <button class="font-semibold text-white bg-[#515F08] px-8 py-2 rounded-3xl">Create</button>
             </div>
 
         </form>
     </main>
+
 </x-layout>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#body' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<style>
+    .ck-editor__editable[role="textbox"] {
+        /* Editing area */
+        min-height: 200px;
+    }
+</style>

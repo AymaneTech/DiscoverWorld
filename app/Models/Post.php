@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\PostCreated;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,13 +14,12 @@ class Post extends Model
         "title",
         "description",
         "body",
-        "image",
         "user_id",
-        "category_id",
+        "destination_id",
         "slug",
     ];
 
-    protected $with = ["category", "author"];
+    protected $with = ["destination", "author", "image"];
 
     public function scopeFilter($query, array $filters)
     {
@@ -27,16 +27,35 @@ class Post extends Model
             ->where("title", "like", "%" . $search . "%")
             ->orWhere("body", "like", "%" . $search . "%"));
 
-        $query->when($filters["category"] ?? false, fn($query, $category) => $query
-            ->whereHas('category', fn($query) => $query->where("slug", $category)
+        $query->when($filters["destination"] ?? false, fn($query, $destination) => $query
+            ->whereHas('destination', fn($query) => $query->where("slug", $destination)
             )
         );
+        $sort = $filters["sort"] ?? '';
+        $isOldest = $sort === "oldest";
+
+        $query->when($isOldest, function ($query) {
+            return $query->oldest();
+        }, function ($query) {
+            return $query->latest();
+        });
+        if (!count(array_filter($filters))) {
+            $query->latest();
+        }
     }
 
-    public function category(){
-        return $this->belongsTo(Category::class);
+    public function destination()
+    {
+        return $this->belongsTo(Destination::class);
     }
-    public function author (){
+
+    public function author()
+    {
         return $this->belongsTo(User::class, "user_id");
+    }
+
+    public function image()
+    {
+        return $this->hasMany(Image::class);
     }
 }
